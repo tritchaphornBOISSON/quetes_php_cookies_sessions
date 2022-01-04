@@ -2,8 +2,13 @@
 <?php require 'inc/head.php'; ?>
 <?php
 if (isset($_GET['add_to_cart'])) {
-    $_SESSION['cookie_id'] = $_GET['add_to_cart'];
-    $_SESSION['cookie_name'] = $catalog[$_SESSION['cookie_id']]['name'];
+    if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = [];
+    }
+
+    $_SESSION['cart'][] = $_GET['add_to_cart'];
+    //header('Location: /');
+    //die;
 }
 ?>
 <section class="cookies container-fluid">
